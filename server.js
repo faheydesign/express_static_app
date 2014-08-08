@@ -1,14 +1,14 @@
-var express = require("express");
+'use strict';
+var express = require('express');
+var http = require('http');
+
 var app = express();
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 
-app.get('/', function(req, res){
-  res.sendFile("/public/index.html");
-  console.log("serving up index");
+var server = http.createServer(app);
+
+server.listen(3000, function () {
+  console.log('Server magic has started on port 3000');
 });
-
-
-app.listen(3000);
-console.log("magic happens on port 3000");
